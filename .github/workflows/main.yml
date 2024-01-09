@@ -7,9 +7,9 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
   provision-s3:
-    name: provision-s3
     runs-on: ubuntu-latest
     environment: dev
 
@@ -27,8 +27,8 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        
-      - name: 'Terraform Validate'
+
+      - name: Terraform Validate
         run: terraform validate
 
       - name: Terraform Apply

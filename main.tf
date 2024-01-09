@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 # Create an S3 bucket
-resource "aws_s3_bucket" "my_bucket" {
+resource "aws_s3_bucket" "dion-tfstate-bkt" {
   bucket = "dion-tfstate-bkt"  # Change this to a globally unique name
   acl    = "private"
 }
