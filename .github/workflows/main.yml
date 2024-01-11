@@ -17,7 +17,7 @@ jobs:
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v1
 
-      - name: Configure AWS Credentials
+      - name: Configure AWS Credentials and Init
         run: |
           echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
@@ -27,4 +27,3 @@ jobs:
         run: terraform apply -auto-approve
 
       # Add additional steps for testing or deployment as needed
-
