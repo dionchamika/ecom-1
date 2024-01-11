@@ -1,9 +1,20 @@
 provider "aws" {
-  region = "us-east-1"  # Adjust region as needed
+  region = "us-east-1"
 }
 
-# Create an S3 bucket
+resource "aws_instance" "react_app_server" {
+  ami           = "ami-0c7217cdde317cfec"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "react_app_server"
+  }
+}
+
 resource "aws_s3_bucket" "dion-tfstate-bkt" {
-  bucket = "dion-tfstate-bkt"  # Change this to a globally unique name
+  bucket = "dion-tfstate-bkt"
   acl    = "private"
+  tags = {
+    Name = "Terraform State Bucket"
+  }
 }
