@@ -28,14 +28,30 @@ jobs:
           terraform init
           terraform apply -auto-approve
 
-      - name: Capture Instance ID
+      # Output the EC2 instance ID
+      - name: Output EC2 Instance ID
         run: |
           INSTANCE_ID=$(terraform output -raw instance_id)
-          echo "Instance ID: $INSTANCE_ID" >> $GITHUB_ENV
+          echo "EC2 Instance ID: $INSTANCE_ID" >> $GITHUB_ENV
 
+  connect-to-ec2:
+    name: Connect to EC2 Instance
+    runs-on: ubuntu-latest
+    needs: provision-ec2-and-s3
+    environment: dev
+
+    steps:
+      # Extract the EC2 instance ID from the first job
+      - name: Extract EC2 Instance ID
+        run: |
+          echo "EC2 Instance ID: ${{ needs.provision-ec2-and-s3.outputs['EC2 Instance ID'] }}" >> $GITHUB_ENV
+
+      # Connect to the EC2 instance using AWS SSM
       - name: Connect to EC2 Instance using SSM
-        run: aws ssm start-session --target i-${{ env.INSTANCE_ID }}
+        run: |
+          aws ssm start-session --target i-${{ env.INSTANCE_ID }}
 
+      # Add additional steps for Ubuntu instance setup (if needed)
       - name: Configure Ubuntu Instance
         run: |
           # Install Git
