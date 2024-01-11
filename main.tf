@@ -18,3 +18,11 @@ resource "aws_s3_bucket" "dion5-tfstate-bkt" {
     Name = "Terraform State Bucket"
   }
 }
+
+terraform {
+  backend "s3" {
+    bucket = "dion5-tfstate-bkt" #change this
+    key    = "terraform.tfstate"
+    region = "us-east-1" 
+  }
+}
