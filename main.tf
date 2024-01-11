@@ -11,8 +11,8 @@ resource "aws_instance" "react_app_server" {
   }
 }
 
-resource "aws_s3_bucket" "dion-tfstate-bkt" {
-  bucket = "dion-tfstate-bkt"
+resource "aws_s3_bucket" "dion2-tfstate-bkt" {
+  bucket = "dion2-tfstate-bkt"
   acl    = "private"
   tags = {
     Name = "Terraform State Bucket"
