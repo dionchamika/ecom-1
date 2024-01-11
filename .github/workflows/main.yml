@@ -49,13 +49,3 @@ jobs:
           cd ecom-1
           ls -la
           echo "Current directory: $(pwd)"
-
-      # Add additional debug output or commands as needed
-
-      - name: Debug Environment
-        run: |
-          env
-          
-      - name: Debug AWS CLI Configuration
-        run: |
-          aws configure list
