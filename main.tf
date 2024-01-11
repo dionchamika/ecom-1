@@ -14,6 +14,7 @@ resource "aws_instance" "react2_app_server" {
 resource "aws_s3_bucket" "dion5-tfstate-bkt" {
   bucket = "dion5-tfstate-bkt"
   acl    = "private"
+
   tags = {
     Name = "Terraform State Bucket"
   }

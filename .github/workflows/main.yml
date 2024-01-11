@@ -42,6 +42,7 @@ jobs:
         run: |
           INSTANCE_ID=$(terraform output -raw instance_id)
           echo "Instance ID: $INSTANCE_ID" >> $GITHUB_ENV
+        shell: bash
 
       # Connect to the EC2 instance using AWS SSM Session Manager
       - name: Connect to EC2 Instance using SSM
