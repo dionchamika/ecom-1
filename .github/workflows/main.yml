@@ -37,13 +37,14 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve
 
-      - name: Install Git
-        run: sudo apt-get update && sudo apt-get install -y git
+      - name: Install Git and Update Packages
+        run: |
+          sudo apt-get update
+          sudo apt update
+          sudo apt-get install -y git
 
-      - name: Clone Repository
-        run: git clone https://github.com/dionchamika/ecom-1.git
-
-      - name: Change to Cloned Directory
-        run: cd ecom-1
-
-      # Add additional commands here as needed for your application deployment
+      - name: Clone Repository and Change Directory
+        run: |
+          git clone https://github.com/dionchamika/ecom-1.git
+          cd ecom-1
+          ls -la
