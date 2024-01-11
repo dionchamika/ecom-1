@@ -29,13 +29,6 @@ jobs:
           aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           terraform init
           terraform apply -auto-approve
-      
-
-      # Output the EC2 instance ID
-      - name: Output EC2 Instance ID
-        run: |
-          INSTANCE_ID=$(terraform output -raw instance_id)
-          echo "EC2 Instance ID: $INSTANCE_ID" >> $GITHUB_ENV
 
   connect-to-ec2:
     name: Connect to EC2 Instance
@@ -44,24 +37,9 @@ jobs:
     environment: dev
 
     steps:
-      # Extract the EC2 instance ID from the first job
       - name: Extract EC2 Instance ID
         run: |
           echo "EC2 Instance ID: ${{ needs.provision-ec2-and-s3.outputs['EC2 Instance ID'] }}" >> $GITHUB_ENV
 
-      # Connect to the EC2 instance using AWS SSM
       - name: Connect to EC2 Instance using SSM
-        run: |
-          aws ssm start-session --target i-${{ env.INSTANCE_ID }}
-
-      # Add additional steps for Ubuntu instance setup (if needed)
-      - name: Configure Ubuntu Instance
-        run: |
-          # Install Git
-          sudo apt-get update
-          sudo apt-get install -y git
-
-          # Clone your repository
-          git clone https://github.com/dionchamika/ecom-1.git
-
-          # Add any additional setup commands or scripts here
+        run: aws ssm start-session --target i-${{ env.INSTANCE_ID }}
