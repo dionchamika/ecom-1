@@ -11,11 +11,14 @@ resource "aws_instance" "react2_app_server" {
   }
 }
 
-resource "aws_s3_bucket" "dion6-tfstate-bkt" {
-  bucket = "dion6-tfstate-bkt"
+resource "aws_s3_bucket" "dion5-tfstate-bkt" {
+  bucket = "dion5-tfstate-bkt"
   acl    = "private"
   tags = {
     Name = "Terraform State Bucket"
   }
 }
 
+output "instance_id" {
+  value = aws_instance.react2_app_server.id
+}
