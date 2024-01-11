@@ -1,4 +1,4 @@
-name: CI/CD | Pipeline
+name: CI/CD | Pipeline - RDS
 
 on:
   push:
@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  provision-ec2-and-s3:
-    name: Provision EC2 Instance and S3 Bucket
+  provision-rds:
+    name: Provision RDS Instance
     runs-on: ubuntu-latest
     environment: dev
 
@@ -35,4 +35,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve -target=aws_db_instance.my_database
