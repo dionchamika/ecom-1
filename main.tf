@@ -2,12 +2,12 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_instance" "react2_app_server" {
+resource "aws_instance" "react4_app_server" {
   ami           = "ami-0c7217cdde317cfec"
   instance_type = "t2.micro"
 
   tags = {
-    Name = "react2_app_server"
+    Name = "react4_app_server"
   }
 }
 
