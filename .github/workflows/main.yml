@@ -43,12 +43,7 @@ jobs:
       - name: Clone Repository
         run: git clone https://github.com/dionchamika/ecom-1.git
 
-      - name: Install Nginx
-        run: sudo apt-get install -y nginx
+      - name: Change to Cloned Directory
+        run: cd ecom-1
 
-      - name: Configure Nginx
-        run: |
-          sudo rm /etc/nginx/sites-enabled/default
-          sudo cp ecom-1/nginx-config /etc/nginx/sites-available/
-          sudo ln -s /etc/nginx/sites-available/nginx-config /etc/nginx/sites-enabled/
-          sudo systemctl restart nginx
+      # Add additional commands here as needed for your application deployment
