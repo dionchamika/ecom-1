@@ -39,12 +39,23 @@ jobs:
 
       - name: Install Git and Update Packages
         run: |
-          sudo apt-get update
-          sudo apt update
-          sudo apt-get install -y git
+          sudo /usr/bin/apt-get update
+          sudo /usr/bin/apt update
+          sudo /usr/bin/apt-get install -y git
 
       - name: Clone Repository and Change Directory
         run: |
           git clone https://github.com/dionchamika/ecom-1.git
           cd ecom-1
           ls -la
+          echo "Current directory: $(pwd)"
+
+      # Add additional debug output or commands as needed
+
+      - name: Debug Environment
+        run: |
+          env
+          
+      - name: Debug AWS CLI Configuration
+        run: |
+          aws configure list
