@@ -36,3 +36,19 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+
+      - name: Install Git
+        run: sudo apt-get update && sudo apt-get install -y git
+
+      - name: Clone Repository
+        run: git clone https://github.com/dionchamika/ecom-1.git
+
+      - name: Install Nginx
+        run: sudo apt-get install -y nginx
+
+      - name: Configure Nginx
+        run: |
+          sudo rm /etc/nginx/sites-enabled/default
+          sudo cp ecom-1/nginx-config /etc/nginx/sites-available/
+          sudo ln -s /etc/nginx/sites-available/nginx-config /etc/nginx/sites-enabled/
+          sudo systemctl restart nginx
