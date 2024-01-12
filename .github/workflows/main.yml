@@ -32,10 +32,16 @@ jobs:
           echo "$PRIVATE_KEY" > ~/.ssh/key.pem
           chmod 600 ~/.ssh/key.pem
 
-      - name: Commit private key to GitHub repository
+      - name: Change to the Terraform directory
+        run: cd path/to/your/terraform/directory
+
+      - name: Configure Git
         run: |
           git config user.email "dionchamika@gmail.com"
           git config user.name "Dionc720"
+
+      - name: Add and commit private key
+        run: |
           git add ~/.ssh/key.pem
           git commit -m "Add private key"
           git push
