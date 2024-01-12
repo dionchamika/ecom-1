@@ -33,7 +33,7 @@ jobs:
           chmod 600 ~/.ssh/key.pem
 
       - name: Change to the Terraform directory
-        run: cd path/to/your/terraform/directory
+        run: cd main.tf
 
       - name: Configure Git
         run: |
