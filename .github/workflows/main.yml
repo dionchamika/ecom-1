@@ -34,8 +34,5 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Upload main.tf to S3
-        run: aws s3 cp main.tf s3://dion5-tfstate-bkt/
-
       - name: Terraform Apply
         run: terraform apply -auto-approve
