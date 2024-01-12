@@ -32,9 +32,6 @@ jobs:
           echo "$PRIVATE_KEY" > ~/.ssh/key.pem
           chmod 600 ~/.ssh/key.pem
 
-      - name: Change to the Terraform directory
-        run: cd main.tf
-
       - name: Configure Git
         run: |
           git config user.email "dionchamika@gmail.com"
