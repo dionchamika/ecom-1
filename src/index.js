@@ -7,10 +7,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 
-
-
 import { Home, Product, Products, AboutPage, ContactPage, Cart, Login, Register, Checkout, PageNotFound } from "./pages"
-import Userpp from './pages/Userpp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,8 +25,6 @@ root.render(
         <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/product/*" element={<PageNotFound />} />
-        <Route path="/user" element={<Userpp />} />
-
       </Routes>
     </Provider>
   </BrowserRouter>
