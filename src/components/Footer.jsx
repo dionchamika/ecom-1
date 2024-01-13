@@ -9,9 +9,6 @@ const Footer = () => {
             <p className="mb-3 mb-md-0">&copy; {" "}
              2024 | Matri6
             </p>
-            <a className="text-dark fs-4" href="https://github.com/ssahibsingh" target="_blank" rel="noreferrer">
-              <i className="fa fa-github"></i>
-            </a>
           </div>
         </div>
       </footer>
